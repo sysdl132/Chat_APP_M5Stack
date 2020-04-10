@@ -17,9 +17,13 @@ using library: pubsubclient,m5ez
 
 ![vis](https://img.shields.io/github/issues-raw/sysdl132/Chat_APP_M5Stack?&logo=vue.js)
 # version record
-v1.4-beta01 -- fix OTA problem
+<!--v1.4-beta01 -- fix OTA problem-=-->
 
-v1.3.3 -- fix a bug in OTA
+<!------------------------->
+
+v1.3.3-02 -- OTA can work
+
+v1.3.3-01 -- fix a bug in OTA
 
 v1.3.2 -- repair index
 
