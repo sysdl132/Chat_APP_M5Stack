@@ -2,9 +2,9 @@
 * ![vl](https://img.shields.io/github/v/release/sysdl132/Chat_APP_M5Stack?style=for-the-badge&logo=fedora) | stable version
 * ![vlp](https://img.shields.io/github/v/release/sysdl132/Chat_APP_M5Stack?include_prereleases&style=for-the-badge&logo=fedora) | latest version
 ### version maintaining:
-![v1](https://img.shields.io/badge/LTS%20rolling%20version%20for%20now%3A-v1.2%2Cv1.3-brightgreen?logo=fedora)
+![v1](https://img.shields.io/badge/LTS%20rolling%20version%20for%20now%3A-v1.1%2Cv1.3-brightgreen?logo=fedora)
 ### version stopped maintaining:
-![vn](https://img.shields.io/badge/stopped%20maintain%20version%3A-v0.5%2Cv1.0%2Cv1.1%2Cv1.2-red?&logo=iFixit)
+![vn](https://img.shields.io/badge/stopped%20maintain%20version%3A-v0.5%2Cv1.0%2Cv1.2-red?&logo=iFixit)
 
 please update to latest version.
 # Chat_APP_M5Stack
