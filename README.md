@@ -63,5 +63,5 @@ Change since latest version/(include alpha builds):  ![1](https://img.shields.io
 ## Solved TODO:
 - Function update
 - Merge m5ez demo
-- OTA CSR certifite update(cannot use now)
+- OTA CSR certifite update ~~(cannot use now)~~
 - OTA site
