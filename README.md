@@ -59,9 +59,9 @@ License:  ![lc](https://img.shields.io/github/license/sysdl132/chat_app_m5stack)
 Change since latest version/(include alpha builds):  ![1](https://img.shields.io/github/commits-since/sysdl132/chat_app_m5stack/latest/master?style=for-the-badge&logo=PyPI)   ![2](https://img.shields.io/github/commits-since/sysdl132/chat_app_m5stack/latest/master?include_prereleases&style=for-the-badge&logo=PyPI)
 ## TODO:
 - M5StickC support
-- OTA CSR certifite update(cannot use now)
-- OTA site
 - rolling library version update( ![lver](https://img.shields.io/badge/LTS%20rolling%20version%20for%20now%3A-v1.3-brightgreen&logo=fedora) )
 ## Solved TODO:
 - Function update
 - Merge m5ez demo
+- OTA CSR certifite update(cannot use now)
+- OTA site
