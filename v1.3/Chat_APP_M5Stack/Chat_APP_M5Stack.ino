@@ -1,3 +1,21 @@
+/*
+ * CHAT APP FOR M5STACK
+ * This program provides a space to chat.
+ * And based on tanopanta's base program.
+ * INCLUDE FEATURES:
+ * - OTA update
+ * - system imfo
+ * - backlight
+ * - theme chooser
+ * --THIS PROGRAM IS UNDER MIT LICENSE--
+ * =======================================
+ * TODO LIST:
+ *    roll version
+ *    open dev channel
+ *    create a new branch for binaries
+ *    China mirrors
+ */
+
 // includes
 #include <M5Stack.h>
 #include <SPIFFS.h>
@@ -14,6 +32,7 @@ PubSubClient client(espClient);
 // config 
 const char* mqtt_server = "test.mosquitto.org";
 const int mqtt_port = 1883;
+//const int latest_version = 1.3.3;
 
 // codes
 std::vector<String> msgList;
@@ -59,8 +78,20 @@ void loop() {
   mainmenu.addItem("chat", chat_menu);
   mainmenu.addItem("option", mainmenu_image);
   mainmenu.addItem("settings", ez.settings.menu);
-  mainmenu.addItem("update", mainmenu_ota);
+  mainmenu.addItem("update", ota_menu);
   mainmenu.run();
+}
+
+void ota_menu() {
+  ezMenu otamenu("OTA options");
+  otamenu.addItem("via stable channel", mainmenu_ota);
+  otamenu.addItem("via dev-rolling channel", mainmenu_ota_dev);
+  otamenu.addItem("current version",version_check);
+  otamenu.run();
+}
+
+void version_check() {
+  ez.msgBox("version:v1.3.3", "latest version:v1.3.3");
 }
 
 void mainmenu_image() {
@@ -217,10 +248,10 @@ void sysInfoPage2() {
 }
 
 void mainmenu_ota() {
-  if (ez.msgBox("V1.3.3-LTS/OTA update", "update chat with internet now!", "Cancel#OK#") == "OK") {
+  if (ez.msgBox("V1.3.3-LTS/OTA update", "update software via stable channel with internet now!", "Cancel#OK#") == "OK") {
     ezProgressBar progress_bar("OTA update in progress", "Downloading ...", "Abort");
-    #include "gitee_com.h";              // the root certificate is now in const char * root_cert
-    ;if (ez.wifi.update("https://raw.githubusercontent.com/sysdl132/Chat_APP_M5Stack/master/1.bin", root_cert, &progress_bar)) {                // https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/1.bin
+    #include "gitee_com.h"              // the root certificate is now in const char * root_cert
+    if (ez.wifi.update("https://raw.githubusercontent.com/sysdl132/Chat_APP_M5Stack/bin/1.bin", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/1.bin
       ez.msgBox("OTA update success", "OTA download successful. Reboot to new firmware", "Reboot");
       ESP.restart();
     } else {
@@ -229,7 +260,22 @@ void mainmenu_ota() {
   }
 };
 
-void powerOff() { m5.powerOFF(); }
+void mainmenu_ota_dev() {
+  if (ez.msgBox("V1.3.3-LTS/OTA update", "update software via dev channel with internet now!", "Cancel#OK#") == "OK") {
+    ezProgressBar progress_bar("OTA update in progress", "Downloading ...", "Abort");
+    #include "gitee_com.h"              // the root certificate is now in const char * root_cert
+    if (ez.wifi.update("https://raw.githubusercontent.com/sysdl132/Chat_APP_M5Stack/bin/2.bin", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/2.bin  ,same website has the same certificate. 
+      ez.msgBox("OTA update success", "OTA download successful. Reboot to new firmware", "Reboot");
+      ESP.restart();
+    } else {
+      ez.msgBox("OTA error", ez.wifi.updateError(), "OK");
+    }
+  }
+};
+
+void powerOff() { 
+  m5.powerOFF(); 
+  }
 
 void aboutM5ez() {
   ez.msgBox("About M5ez", "Rop Gonggrijp write|sysdl132 write chat");
