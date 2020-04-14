@@ -1,4 +1,5 @@
-#include <M5Stack.h>
+// DEPRECATED
+/*#include <M5Stack.h>
 #include <SPIFFS.h>
 #include <M5ez.h>
 #include <vector>
@@ -229,3 +230,4 @@ void powerOff() { m5.powerOFF(); }
 void aboutM5ez() {
   ez.msgBox("About M5ez", "Rop Gonggrijp write|sysdl132 write chat");
 }
+*/
