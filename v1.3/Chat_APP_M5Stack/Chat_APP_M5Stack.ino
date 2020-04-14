@@ -11,8 +11,6 @@
  * =======================================
  * TODO LIST:
  *    roll version
- *    open dev channel
- *    create a new branch for binaries
  *    China mirrors
  */
 
