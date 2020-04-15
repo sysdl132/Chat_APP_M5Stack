@@ -1,2 +1,4 @@
 # Branch for binaries
-all programs are deprecated.only for binaries
+1.bin -> stable
+
+2.bin -> dev
