@@ -54,14 +54,10 @@ void setup() {
   M5.begin();
   Serial.begin(115200);
   // Serial.begin(921600);
-  Serial.println("STARTING BOARD..............................................................................done");  
-  Serial.println("pre-booting...... done");  
-  Serial.println("starting console.............................................................................................................................done");
-  Serial.print(".");Serial.print("loading...login as root...logged on");  
-  Serial.println("start serial 115200 console...done");
-  Serial.println("boot item is bootloader at 0x1000----------------------------------------------------------------------------------------------booting---success.");
+  Serial.println("STARTING BOARD...done");  
+  Serial.println("booting...... done");  
   Serial.println("enter system...init...  Done.");
-  Serial.print("ALL DONE- 10 -");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");
+  Serial.print("ALL DONE- 10 -");
   #include "default.h"
   #include "dark.h"
   #include "deep.h"
