@@ -1,4 +1,4 @@
-# v1.3.3 is out!(still in 1.1 folder)  
+<!--# v1.3.3 is out!(still in 1.1 folder) --> 
 * ![vl](https://img.shields.io/github/v/release/sysdl132/Chat_APP_M5Stack?style=for-the-badge&logo=fedora) | stable version
 * ![vlp](https://img.shields.io/github/v/release/sysdl132/Chat_APP_M5Stack?include_prereleases&style=for-the-badge&logo=fedora) | latest version
 ### version maintaining:
@@ -37,7 +37,7 @@ v1.2.0 -- inside build
 
 -----------------
 
-v1.1.0 -- CSR update//function update  ISSUE:Cannot work properly
+v1.1.0 -- SSL update//function update  ISSUE:Cannot work properly
 
 ------------------
 
