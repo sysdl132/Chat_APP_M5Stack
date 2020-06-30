@@ -1,12 +1,9 @@
-<!--# v1.3.3 is out!(still in 1.1 folder) --> 
-* ![vl](https://img.shields.io/github/v/release/sysdl132/Chat_APP_M5Stack?style=for-the-badge&logo=fedora) | stable version
-* ![vlp](https://img.shields.io/github/v/release/sysdl132/Chat_APP_M5Stack?include_prereleases&style=for-the-badge&logo=fedora) | latest version
-### version maintaining:
-![v1](https://img.shields.io/badge/LTS%20rolling%20version%20for%20now%3A-v1.3-brightgreen?logo=fedora)
-### version stopped maintaining:
-![vn](https://img.shields.io/badge/stopped%20maintain%20version%3A-v0.5%2Cv1.0%2Cv1.1%2Cv1.2-red?&logo=iFixit)
-
-please update to latest version.
+## Our update logs
+- update time:  2020.06.30
+- index:  pubsubclient library update
+- version code:  v1.3.3-20200630
+- patch code:  patch-01
+### for latest binaries please go to the ``bin`` branch
 # Chat_APP_M5Stack
 
 Prototype chat application using MQTT with M5Stack (Faces)
