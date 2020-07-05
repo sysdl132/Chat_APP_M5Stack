@@ -54,10 +54,14 @@ void setup() {
   M5.begin();
   Serial.begin(115200);
   // Serial.begin(921600);
-  Serial.println("STARTING BOARD...done");  
-  Serial.println("booting...... done");  
+  Serial.println("STARTING BOARD..............................................................................done");  
+  Serial.println("pre-booting...... done");  
+  Serial.println("starting console.............................................................................................................................done");
+  Serial.print(".");Serial.print("loading...login as root...logged on");  
+  Serial.println("start serial 115200 console...done");
+  Serial.println("boot item is bootloader at 0x1000----------------------------------------------------------------------------------------------booting---success.");
   Serial.println("enter system...init...  Done.");
-  Serial.print("ALL DONE- 10 -");
+  Serial.print("ALL DONE- 10 -");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");
   #include "default.h"
   #include "dark.h"
   #include "deep.h"
@@ -244,8 +248,8 @@ void sysInfoPage2() {
 void mainmenu_ota() {
   if (ez.msgBox("V1.3.3-LTS/OTA update", "update software via stable channel with internet now!", "Cancel#OK#") == "OK") {
     ezProgressBar progress_bar("OTA update in progress", "Downloading ...", "Abort");
-    #include "gitee_com.h"              // the root certificate is now in const char * root_cert
-    if (ez.wifi.update("https://raw.githubusercontent.com/sysdl132/Chat_APP_M5Stack/bin/1.bin", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/1.bin
+    #include "github-production-release-asset-2e65be_s3_amazonaws_com.h"              // the root certificate is now in const char * root_cert
+    if (ez.wifi.update("https://github-production-release-asset-2e65be.s3.amazonaws.com/238684227/68cddf00-beb2-11ea-97a3-12166123b94f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20200705%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200705T035602Z&X-Amz-Expires=300&X-Amz-Signature=cce1f7e74cdc3a9513fd5c6f675b9620cac9fa58929d7e2d0363a8510fe422a5&X-Amz-SignedHeaders=host&actor_id=54708046&repo_id=238684227&response-content-disposition=attachment%3B%20filename%3Dmain.bin&response-content-type=application%2Foctet-stream", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/1.bin
       ez.msgBox("OTA update success", "OTA download successful. Reboot to new firmware", "Reboot");
       ESP.restart();
     } else {
@@ -257,8 +261,9 @@ void mainmenu_ota() {
 void mainmenu_ota_dev() {
   if (ez.msgBox("V1.3.3-LTS/OTA update", "update software via dev channel with internet now!", "Cancel#OK#") == "OK") {
     ezProgressBar progress_bar("OTA update in progress", "Downloading ...", "Abort");
-    #include "gitee_com.h"              // the root certificate is now in const char * root_cert
-    if (ez.wifi.update("https://raw.githubusercontent.com/sysdl132/Chat_APP_M5Stack/bin/2.bin", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/2.bin  ,same website has the same certificate. 
+    //#include "gitee_com.h"    // the root certificate is now in const char * root_cert
+    #include "github-production-release-asset-2e65be_s3_amazonaws_com.h"
+    if (ez.wifi.update("https://github-production-release-asset-2e65be.s3.amazonaws.com/238684227/68cddf00-beb2-11ea-97a3-12166123b94f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20200705%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200705T035602Z&X-Amz-Expires=300&X-Amz-Signature=cce1f7e74cdc3a9513fd5c6f675b9620cac9fa58929d7e2d0363a8510fe422a5&X-Amz-SignedHeaders=host&actor_id=54708046&repo_id=238684227&response-content-disposition=attachment%3B%20filename%3Ddev.bin&response-content-type=application%2Foctet-stream", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/2.bin  ,same website has the same certificate. 
       ez.msgBox("OTA update success", "OTA download successful. Reboot to new firmware", "Reboot");
       ESP.restart();
     } else {
