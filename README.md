@@ -1,9 +1,13 @@
 ## Our update logs
-- update time:  2020.06.30
-- index:  pubsubclient library update
-- version code:  v1.3.3-20200630
-- patch code:  patch-01
-### for latest binaries please go to the ``bin`` branch
+- update time:  2020.07.05
+- index:  OTA site changed
+- version code:  v1.3.3-20200705
+- patch code:  patch-02
+
+-------
+
+Last update:   v1.3.3-20200620
+### for latest binaries please go to the ``releases``
 # Chat_APP_M5Stack
 
 Prototype chat application using MQTT with M5Stack (Faces)
