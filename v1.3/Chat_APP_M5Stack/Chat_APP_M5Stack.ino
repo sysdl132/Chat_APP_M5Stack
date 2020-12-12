@@ -38,11 +38,11 @@ bool inchat = false;
 
 // on message received
 void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.print("Message arrived [");
+  Serial.print("INFO I Message arrived [");
   Serial.print(topic);
   Serial.print("] ");
   payload[length] = '\0';
-  Serial.println("getcode:");
+  Serial.println("INFO I getcode:");
   Serial.println("200");
   String msg = String((char*) payload);
   Serial.println(msg);
@@ -54,14 +54,12 @@ void setup() {
   M5.begin();
   Serial.begin(115200);
   // Serial.begin(921600);
-  Serial.println("STARTING BOARD..............................................................................done");  
-  Serial.println("pre-booting...... done");  
-  Serial.println("starting console.............................................................................................................................done");
-  Serial.print(".");Serial.print("loading...login as root...logged on");  
-  Serial.println("start serial 115200 console...done");
-  Serial.println("boot item is bootloader at 0x1000----------------------------------------------------------------------------------------------booting---success.");
-  Serial.println("enter system...init...  Done.");
-  Serial.print("ALL DONE- 10 -");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");Serial.print(".");
+  Serial.println("BOOT starting...");  
+  Serial.println("TASK starting...");  
+  Serial.println("TASK started console...");
+  Serial.println("TASK start serial 115200 console...done");
+  Serial.println("BOOT ----boot item is bootloader at 0x1000----");
+  Serial.println("BOOT init done");
   #include "default.h"
   #include "dark.h"
   #include "deep.h"
@@ -72,7 +70,7 @@ void setup() {
 }
 
 void loop() {
-  ezMenu mainmenu("Welcome to M5ez/v1.3.3");
+  ezMenu mainmenu("MChat+ 1.3.5");
   mainmenu.addItem("chat", chat_menu);
   mainmenu.addItem("option", mainmenu_image);
   mainmenu.addItem("settings", ez.settings.menu);
@@ -84,12 +82,13 @@ void ota_menu() {
   ezMenu otamenu("OTA options");
   otamenu.addItem("via stable channel", mainmenu_ota);
   otamenu.addItem("via dev-rolling channel", mainmenu_ota_dev);
-  otamenu.addItem("current version",version_check);
+  otamenu.addItem("current version", version_check);
+  otamenu.addItem("Back");
   otamenu.run();
 }
 
 void version_check() {
-  ez.msgBox("version:v1.3.3", "latest version:v1.3.3");
+  ez.msgBox("version: v1.3.5+", "latest version: v1.3.5+");
 }
 
 void mainmenu_image() {
@@ -132,7 +131,7 @@ void redraw() {
   ez.header.show("chat");
   ez.canvas.font(&FreeSans9pt7b);
   ez.canvas.lmargin(10);
-  Serial.println("INPAGE  chat");
+  Serial.println("INFO I chat page");
   // show latest 8 messages
   int total = 0;
   for(int i = msgList.size() - 1 ; i >= 0; i--) {
@@ -148,7 +147,7 @@ void redraw() {
 void chat_menu() {
   if(WiFi.status() != WL_CONNECTED) {
     ez.msgBox("notice", "Wi-Fi is not enabled. Please setting Wi-Fi.");
-    Serial.println("menuloaded");
+    Serial.println("INFO I menuloaded");
     return;
   }
   inchat = true;
@@ -158,7 +157,7 @@ void chat_menu() {
   
   while(true) {
     if(!keepMqttConn()) {
-      Serial.println("ERROR.code:");
+      Serial.println("ERROR code:");
       ez.msgBox("notice", "MQTT server not found.");
       Serial.println("404");
       return;
@@ -248,8 +247,8 @@ void sysInfoPage2() {
 void mainmenu_ota() {
   if (ez.msgBox("V1.3.3-LTS/OTA update", "update software via stable channel with internet now!", "Cancel#OK#") == "OK") {
     ezProgressBar progress_bar("OTA update in progress", "Downloading ...", "Abort");
-    #include "github-production-release-asset-2e65be_s3_amazonaws_com.h"              // the root certificate is now in const char * root_cert
-    if (ez.wifi.update("https://github-production-release-asset-2e65be.s3.amazonaws.com/238684227/68cddf00-beb2-11ea-97a3-12166123b94f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20200705%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200705T035602Z&X-Amz-Expires=300&X-Amz-Signature=cce1f7e74cdc3a9513fd5c6f675b9620cac9fa58929d7e2d0363a8510fe422a5&X-Amz-SignedHeaders=host&actor_id=54708046&repo_id=238684227&response-content-disposition=attachment%3B%20filename%3Dmain.bin&response-content-type=application%2Foctet-stream", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/1.bin
+    #include "downloadsftp_us_aldryn_io.h"              // the root certificate is now in const char * root_cert
+    if (ez.wifi.update("https://downloadsftp.us.aldryn.io/files/mcupkg/esp32/chatapp/1.3/main.bin", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/1.bin
       ez.msgBox("OTA update success", "OTA download successful. Reboot to new firmware", "Reboot");
       ESP.restart();
     } else {
@@ -262,8 +261,9 @@ void mainmenu_ota_dev() {
   if (ez.msgBox("V1.3.3-LTS/OTA update", "update software via dev channel with internet now!", "Cancel#OK#") == "OK") {
     ezProgressBar progress_bar("OTA update in progress", "Downloading ...", "Abort");
     //#include "gitee_com.h"    // the root certificate is now in const char * root_cert
-    #include "github-production-release-asset-2e65be_s3_amazonaws_com.h"
-    if (ez.wifi.update("https://github-production-release-asset-2e65be.s3.amazonaws.com/238684227/68cddf00-beb2-11ea-97a3-12166123b94f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20200705%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200705T035602Z&X-Amz-Expires=300&X-Amz-Signature=cce1f7e74cdc3a9513fd5c6f675b9620cac9fa58929d7e2d0363a8510fe422a5&X-Amz-SignedHeaders=host&actor_id=54708046&repo_id=238684227&response-content-disposition=attachment%3B%20filename%3Ddev.bin&response-content-type=application%2Foctet-stream", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/2.bin  ,same website has the same certificate. 
+    //#include "github-production-release-asset-2e65be_s3_amazonaws_com.h"
+    #include "downloadsftp_us_aldryn_io.h"
+    if (ez.wifi.update("https://downloadsftp.us.aldryn.io/files/mcupkg/esp32/chatapp/1.3/dev.bin", root_cert, &progress_bar)) {                // second address:https://gitee.com/sysdl132/Chat_APP_M5Stack/raw/master/2.bin  ,same website has the same certificate. 
       ez.msgBox("OTA update success", "OTA download successful. Reboot to new firmware", "Reboot");
       ESP.restart();
     } else {

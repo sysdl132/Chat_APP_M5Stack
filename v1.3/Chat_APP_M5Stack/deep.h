@@ -1,6 +1,4 @@
-//  This is the default theme. The values you see are all commented out because they are the defaults so you 
-//  do not need to specify them. Take a look at the dark.h theme file to see how another theme works.
-//
+//  This is the deep theme.based on Default.
 //  (You only need to #include this file if you offer more than one theme and want the theme chooser in the 
 //  settings to also offer the default theme. The original active theme at startup is the last one you
 //  included until the user has saved one in the settings.)
